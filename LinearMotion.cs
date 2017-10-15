@@ -14,60 +14,86 @@ namespace Kinematics
         //a - acceleration
         //Vo - initial speed
 
-        // find distance when speed and time is known 
+            //**** DISTANCE *******
+        // find distance when speed and time are known 
         public static double Distance(double Speed, double Time)
         {
             return Speed * Time;
         }
 
-        // find time when distance and speed is known
-        public static double Time(double Speed, double Distance)
-        {
-            return Distance / Speed;
-        }
-       
-        // find speed when distance and time is known
-        public static double Speed(double Distance, double Time)
-        {
-            return Distance/Time;
-        }
-
-        //find speed when initial speed, acceleration & time is known
-        public static double SpeedByAcceleration(double InitialSpeed, double Time, double Acceleration)
-        {
-            return InitialSpeed+Acceleration*Time;
-        }
-
-        //find initial speed when final speed , acceleration & time is known
-        public static double InitialSpeedByAcceleration(double Speed, double Time, double Acceleration)
-        {
-            return Speed-Acceleration*Time;
-        }
-
-        //find time when final speed, initial speed, and acceleration is known
-        public static double TimeByAcceleration(double Speed, double InitialSpeed, double Acceleration)
-        {
-            return (Speed - InitialSpeed) / Acceleration;
-        }
-
-        //find distance when initial speed, acceleration and time is known 
+        //find distance when initial speed, acceleration and time are known 
         public static double Distance(double InitialSpeed, double Time, double Acceleration)
         {
             return InitialSpeed * Time + 0.5 * Acceleration * Time * Time;
         }
 
-        //find initial speed when distance, acceleration and time is known
-        public static double InitialSpeedDistanceAcceleration(double Distance, double Time, double Acceleration)
+
+
+        //**** TIME *******
+
+        // find time when distance and speed are known
+        public static double TimeV_D(double Speed, double Distance)
         {
-            return Distance/Time - 0.5*Acceleration*Time;
+            return Distance / Speed;
         }
 
-        // find time when distance and acceleration is known
-        public static double TimeByDistanceAndAcceleration(double Acceleration, double Distance)
+        //find time when final speed, initial speed, and acceleration are known
+        public static double TimeV_Vo_a(double Speed, double InitialSpeed, double Acceleration)
+        {
+            return (Speed - InitialSpeed) / Acceleration;
+        }
+
+
+        // find time when distance and acceleration are known
+        public static double TImeD_a(double Distance, double Acceleration)
         {
             return Math.Sqrt(2 * Distance / Acceleration);
         }
 
+
+
+        //**** SPEED *******
+
+        // find speed when distance and time are known
+        public static double Speed(double Distance, double Time)
+        {
+            return Distance/Time;
+        }
+
+        //find speed when initial speed, acceleration & time are known
+        public static double SpeedVo_t_a(double InitialSpeed, double Time, double Acceleration)
+        {
+            return InitialSpeed+Acceleration*Time;
+        }
+
+        //find initial speed when final speed , acceleration & time are known
+        public static double InitialSpeedV_t_a(double Speed, double Time, double Acceleration)
+        {
+            return Speed-Acceleration*Time;
+        }
+
+        
+        //find initial speed when distance, acceleration and time are known
+        public static double InitialSpeedD_t_a(double Distance, double Time, double Acceleration)
+        {
+            return Distance/Time - 0.5*Acceleration*Time;
+        }
+
+
+
+
+        //**** Acceleration *******
+        //Find acceliation when intial and final sppeds & time are known
+        public static double Acceleration(double InitialSpeed, double FinalSpeed, double Time)
+        {
+            return (FinalSpeed - InitialSpeed) / Time;
+        }
+
+        //find aceliation when distance travaled, initial speed, and time are known
+        public static double AccelerationD_Vo_t(double Distance, double InitialSpeed, double Time)
+        {
+            return (2 * Distance - 2 * InitialSpeed * Time) / (Time * Time);
+        }
 
         //time that takes to travel the distance d , acceleration a, to the maximum speed v
         // isosceles trapezoid linear motion with equal acceleration and deceleration 
